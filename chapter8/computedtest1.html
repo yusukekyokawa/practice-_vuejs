@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js sample</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <input v-model.number="price" type="number">
+  <p>消費税込みの金額{{taxIncluded}}円</p>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      price: 100
+    },
+    computed: {
+      taxIncluded: function () {
+        return this.price * 1.08;
+      }
+    }
+  })
+</script>
+</body>
+</html>

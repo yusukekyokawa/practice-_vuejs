@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js sample</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="item in myArray">{{item}}</li>
+  </ul>
+  <button v-on:click="sortData(myArray)">ソートする</button>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      myArray: ['one', 'two', 'three', 'four', 'five']
+    },
+    methods: {
+      sortData: function (listdata) {
+        listdata.sort(function (a, b) {
+          return (a < b ? -1 : 1)
+
+        })
+      }
+    }
+  })
+</script>
+</body>
+</html>
