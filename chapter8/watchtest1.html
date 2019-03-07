@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js sample</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>禁止文字は、「{{forbiddenText}}」</p>
+  <textarea v-model="inputText"> </textarea>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      forbiddenText: 'だめ',
+      inputText: '今日は、天気です'
+    },
+    watch: {
+      inputText: function () {
+        var pos = this.inputText.indexOf(this.forbiddenText);
+        if (pos >= 0){
+          alert(this.forbiddenText + "は入力できません。");
+          this.inputText = this.inputText.substr(0, pos);
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

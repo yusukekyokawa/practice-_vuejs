@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js sample</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>あと、{{retSec}}秒</p>
+  <button v-on:click="startTimer">START</button>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      retSec: 5,
+      timerObj: null,
+    },
+    methods: {
+      startTimer: function () {
+        this.retSec = 5;
+
+        this.timerObj = setInterval(() => {this.retSec--}, 1000)
+      }
+    },
+    watch: {
+      retSec: function () {
+        if (this.retSec <= 0){
+          alert("制限時間です")
+          clearInterval(this.timerObj);
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>
